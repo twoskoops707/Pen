@@ -58,10 +58,10 @@ protobuf {
         all().forEach { task ->
             task.builtins {
                 java {
-                    option("lite")
+                    options.javaLite = true
                 }
                 kotlin {
-                    option("lite")
+                    options.kotlinLite = true
                 }
             }
         }
