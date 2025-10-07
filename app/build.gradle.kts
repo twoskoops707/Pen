@@ -48,20 +48,27 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-
-    protobuf {
-        protoc {
-            artifact = "com.google.protobuf:protoc:3.21.12"
+    sourceSets {
+        getByName("main") {
+            proto {
+                srcDir("src/main/proto")
+            }
         }
-        generateProtoTasks {
-            all().each { task ->
-                task.builtins {
-                    java {
-                        option("lite")
-                    }
-                    kotlin {
-                        option("lite")
-                    }
+    }
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.21.12"
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option("lite")
+                }
+                kotlin {
+                    option("lite")
                 }
             }
         }
