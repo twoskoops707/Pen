@@ -48,13 +48,6 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
-    sourceSets {
-        getByName("main") {
-            proto {
-                srcDir("src/main/proto")
-            }
-        }
-    }
 }
 
 protobuf {
@@ -62,7 +55,7 @@ protobuf {
         artifact = "com.google.protobuf:protoc:3.21.12"
     }
     generateProtoTasks {
-        all().each { task ->
+        all().forEach { task ->
             task.builtins {
                 java {
                     option("lite")
